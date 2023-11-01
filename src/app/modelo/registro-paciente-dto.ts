@@ -11,5 +11,6 @@ export class RegistroPacienteDTO {
     alergias:string = "";
     correo:string = "";
     contrasenia:string = "";
+    confirmarContrasenia:string = "";
     
     }

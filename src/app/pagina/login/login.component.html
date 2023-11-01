@@ -1,1 +1,18 @@
-<p>login works!</p>
+<form>
+
+    <br/>
+    <div>
+        <label>Correo electrónico: </label>
+        <input type="email" name="correo" [(ngModel)]="loginDTO.correo" required email />
+    </div>
+
+    <br/>
+    <div>
+        <label>Contraseña: </label>
+        <input type="password" name="contrasenia" [(ngModel)]="loginDTO.contrasenia" required minlength=8/>
+    </div>
+
+    <br/>
+    <button type="submit">Iniciar sesion</button>
+
+</form>
