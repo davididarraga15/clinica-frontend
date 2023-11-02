@@ -1,22 +1,31 @@
-<form>
-
-    <br/>
-    <div>
-        <label>Correo electrónico: </label>
-        <input type="email" name="correo" [(ngModel)]="loginDTO.correo" required email />
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0" ><i class="fa-solid fa-user me-3" style="color: #76a5af;" ></i>Inicio de sesión </h5>
     </div>
 
-    <br/>
-    <div>
-        <label>Contraseña: </label>
-        <input type="password" name="contrasenia" [(ngModel)]="loginDTO.contrasenia" required minlength=8/>
+    <div class="card-body p-5">
+        <form>
+        
+            <div>
+                <label>Correo electrónico </label> <br/>
+                <input type="email" name="correo" [(ngModel)]="loginDTO.correo" required email />
+            </div>
+        
+            <br/>
+            <div>
+                <label>Contraseña </label> <br/>
+                <input type="password" name="contrasenia" [(ngModel)]="loginDTO.contrasenia" required minlength=8/>
+            </div>
+        
+            <br/>
+            
+            <button type="submit ">Iniciar sesion</button>
+        
+            <div>
+                <a routerLink="/registro">¿No tienes una cuenta? Registrate</a>
+            </div>
+
+    
+        </form>
     </div>
-
-    <br/>
-    <button type="submit">Iniciar sesion</button>
-
-    <div>
-        <a routerLink="/registro">¿No tienes una cuenta? Registrate</a>
-    </div>
-
-</form>
+</div>
