@@ -7,21 +7,28 @@
         <form>
         
             <div>
-                <label>Correo electrónico </label> <br/>
-                <input type="email" name="correo" [(ngModel)]="loginDTO.correo" required email />
+                <div class="form-floating"> 
+                    <input #correo="ngModel" [ngClass]="correo.invalid && (correo.dirty || correo.touched) ? 'is-invalid' : ''" type="email" name="correo" class="form-control" id="floatingInput" placeholder="name@example.com" required [(ngModel)]="loginDTO.correo" email />
+                    <label class="col-sm-2 col-form-label" >Correo electrónico </label><br/>
+                </div>
+
             </div>
         
             <br/>
             <div>
-                <label>Contraseña </label> <br/>
-                <input type="password" name="contrasenia" [(ngModel)]="loginDTO.contrasenia" required minlength=8/>
+
+                <div class="form-floating"> 
+                    <input #contrasenia="ngModel" [ngClass]="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched) ? 'is-invalid' : ''" type="password" name="contrasenia" class="form-control" id="floatingPassword" placeholder="Password" required [(ngModel)]="loginDTO.contrasenia" minlength=8/>
+                    <label class="col-sm-2 col-form-label">Contraseña </label><br/>
+                </div>
+
             </div>
         
             <br/>
             
-            <button type="submit ">Iniciar sesion</button>
+            <button type="submit" class="btn btn-primary w-100 py-2 btn btn-success boton-iniciar">Iniciar sesion</button>
         
-            <div>
+            <div style="margin-top: 3%;">
                 <a routerLink="/registro">¿No tienes una cuenta? Registrate</a>
             </div>
 
