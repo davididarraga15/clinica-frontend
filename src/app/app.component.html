@@ -2,26 +2,24 @@
 
   <div class="container">
 
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <div class="row align-items-center justify-content-center justify-content-lg-start">
 
-      <a routerLink="" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+      <a routerLink="" class="col-3 align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
   
-        <img src="assets\images\daviSinFondo.png" width="70px" style='display'>
-    
-        <span class="fs-4 ms-3 me-3">{{title}}<br/><span class="fs-4 ms me-3">{{title2}}</span></span>
+        <img src="assets\images\daviSinFondo.png" width="50px" style='display'>
+        <span class="fs-4 ms-3 me-3">{{title}}</span>
       
-
       </a>
 
       
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <ul class="nav col-7 mb-2 justify-content-center mb-md-0">
         <li><a routerLink="" class="nav-link px-2 text-white">Inicio</a></li>
         <li><a routerLink="" class="nav-link px-2 text-white">Medicos</a></li>
         <li><a routerLink="" class="nav-link px-2 text-white">Pacientes</a></li>
-        <li><a routerLink="" class="nav-link px-2 text-white">PQRS</a></li>
+        <li><a routerLink="/gestion-pqrs" class="nav-link px-2 text-white">Gestión PQRS</a></li>
       </ul>
       
-      <div class="text-end">
+      <div class="col-2 text-end">
 
         <button type="button" routerLink="/login" class="btn btn-outline-light me-2">Ingresar</button>
         <button type="button" routerLink="/registro" class="btn btn-success">Registrarse</button>
@@ -54,3 +52,5 @@
       </ul>
     </footer>
 </div>
+
+<!-- ng generate component pagina/inicio --skip-tests -->

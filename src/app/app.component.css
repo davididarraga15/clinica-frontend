@@ -2,3 +2,29 @@
   background-color: #76A5AF !important;
 }
 
+.nav {
+  display: flex; /* Para que los elementos se muestren en línea */
+  list-style: none; /* Elimina los puntos de la lista predeterminados */
+  padding: 0; /* Elimina el relleno predeterminado de la lista */
+  margin: 0; /* Elimina el margen predeterminado de la lista */
+}
+
+
+.nav li {
+  margin: 0 10px; /* Añade margen entre los elementos de la lista */
+}
+
+.nav a {
+  text-decoration: none; /* Elimina la decoración de subrayado en los enlaces */
+  color: #ffffff; /* Color del texto de enlace predeterminado */
+  transition: color 0.3s; /* Agrega una transición suave para el cambio de color */
+}
+
+.nav a:hover {
+  color: #198754 !important;/* Cambia el color del texto al pasar el cursor por encima */
+}
+
+.fs-4 {
+  font-size: 110% !important;
+}
+  

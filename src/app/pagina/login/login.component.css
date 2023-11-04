@@ -24,3 +24,8 @@
 .form-control{
     width: 30% !important;
   }
+
+  .registrate{
+    text-decoration: none;
+    color: #76a5af;
+  }

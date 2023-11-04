@@ -10,7 +10,7 @@ export class RegistroComponent {
 
   registroPacienteDTO: RegistroPacienteDTO;
 
-
+  archivoCargado:string = "";
   eps:string[];
   tipoSangre:string[];
   archivos!:FileList;
@@ -61,9 +61,10 @@ export class RegistroComponent {
   public onFileChange(event:any){
     if (event.target.files.length > 0) {
       const files = event.target.files;
+      this.archivoCargado = files[0].name;
       console.log(files);
+      this.archivos = event.target.files;
     }
-    this.archivos = event.target.files;
   }
 
 }
