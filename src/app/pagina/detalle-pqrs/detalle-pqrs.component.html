@@ -1,1 +1,55 @@
-<p>{{pqrs | json}}</p>
+
+<!-- <p>{{pqrs | json}}</p> -->
+
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0"><i class="fa-solid fa-circle-info me-3" style="color: #76a5af;"></i>Detalle de la PQRS</h5>
+    </div>
+
+    <div class="card-body p-5">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Tipo de solicitud</th>
+                    <th>Fecha de radicación</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+
+            <tbody class="table-group-divider">
+               <tr>
+                    <th class="letraTabla"><p *ngIf="pqrs"> {{pqrs.codigo}}</p></th>
+                    <th class="letraTabla"><p *ngIf="pqrs"> {{pqrs.tipo}}</p></th>
+                    <th class="letraTabla"><p *ngIf="pqrs"> {{pqrs.fecha}}</p></th>
+                    <th class="letraTabla"> <span *ngIf="pqrs" [ngClass]="pqrs.estado === 'ACTIVO' ? 'text-bg-success' : 'text-bg-danger'" class="badge">{{pqrs.estado}}</span></th>
+               </tr>
+
+            </tbody>
+
+        </table>
+
+        <table>
+            <thead>
+                <tr> <th>Motivo</th> </tr> 
+            </thead>
+
+            <tbody class="table-group-divider">
+                <tr>
+                    <th> <p></p> </th> </tr> 
+            </tbody>
+        </table>
+
+        <div class=" cajon">
+            <p *ngIf="pqrs">{{pqrs.motivo}}</p>
+        </div>
+
+
+        <br/>
+        <div class="mb-3">
+            <button type="button" routerLink="/gestion-pqrs" class="btn btn-primary w-100 py-2 btn btn-success boton-volver"><i class="fa-solid fa-angles-left" style="color: #ffffff;"></i> Volver </button>
+        </div>
+
+    </div>
+</div>

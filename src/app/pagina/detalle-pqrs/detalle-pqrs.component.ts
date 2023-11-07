@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CrearPqrsDTO } from 'src/app/modelo/crear-pqrs-dto';
 import { InfoPqrsDTO } from 'src/app/modelo/info-pqrs-dto';
 import { PqrsService } from 'src/app/servicios/pqrs.service';
 
@@ -12,6 +13,7 @@ export class DetallePqrsComponent {
 
   codigoPqrs: string = "";
   pqrs: InfoPqrsDTO | undefined;
+  
 
   constructor( private route:ActivatedRoute, private pqrsService:PqrsService ) {
 

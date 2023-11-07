@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { InfoPqrsDTO } from '../../modelo/info-pqrs-dto';
 import { PqrsService } from '../../servicios/pqrs.service';
+import { CrearPqrsDTO } from 'src/app/modelo/crear-pqrs-dto';
 
 @Component({
   selector: 'app-gestion-pqrs',
@@ -10,6 +11,8 @@ import { PqrsService } from '../../servicios/pqrs.service';
 export class GestionPqrsComponent {
 
   pqrs: InfoPqrsDTO[];
+
+
 
 
   constructor(private pqrsService: PqrsService) {
