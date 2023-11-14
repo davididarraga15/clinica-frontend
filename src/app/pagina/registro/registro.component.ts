@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RegistroPacienteDTO } from 'src/app/modelo/registro-paciente-dto';
+import { RegistroPacienteDTO } from 'src/app/modelo/paciente/registro-paciente-dto';
+import { AuthService } from 'src/app/servicios/auth.service';
+import { ClinicaService } from 'src/app/servicios/clinica.service';
 
 @Component({
   selector: 'app-registro',
@@ -14,11 +16,10 @@ export class RegistroComponent {
   eps:string[];
   tipoSangre:string[];
   archivos!:FileList;
+  mensajeConsola: string = "";
 
 
-
-
-  constructor(){
+  constructor(private authService: AuthService, private clinicaService: ClinicaService){
     this.registroPacienteDTO = new RegistroPacienteDTO();
     this.eps = [];
     this.cargarEps();
@@ -27,12 +28,12 @@ export class RegistroComponent {
   }
 
   public registrar(){
-    console.log(this.registroPacienteDTO);
 
     if(this.archivos != null && this.archivos.length > 0){
       console.log(this.registroPacienteDTO);
     }else{
       console.log("Debe cargar una foto");
+      this.mensajeConsola = "Debe cargar una foto";
     }
   }
 
@@ -40,22 +41,28 @@ export class RegistroComponent {
     return this.registroPacienteDTO.contrasenia == this.registroPacienteDTO.confirmarContrasenia;
   }
 
-  private cargarEps(){
-    this.eps.push("Sanitas");
-    this.eps.push("Nueva EPS");
-    this.eps.push("Sura");
-    this.eps.push("Salud Total");
+  public cargarTipoSangre() {
+    this.tipoSangre.push("A+");
+    this.clinicaService.listarTipoSangre().subscribe({
+      next: data => {
+        this.tipoSangre = data.respuesta;
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
   }
 
-  private cargarTipoSangre(){
-    this.tipoSangre.push("A+");
-    this.tipoSangre.push("O+");
-    this.tipoSangre.push("B+");
-    this.tipoSangre.push("AB+");
-    this.tipoSangre.push("A-");
-    this.tipoSangre.push("O-");
-    this.tipoSangre.push("B-");
-    this.tipoSangre.push("AB-");
+  public cargarEps() {
+    this.eps.push("SURA");
+    this.clinicaService.listarEPS().subscribe({
+      next: data => {
+        this.eps = data.respuesta;
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
   }
 
   public onFileChange(event:any){
@@ -66,5 +73,7 @@ export class RegistroComponent {
       this.archivos = event.target.files;
     }
   }
+
+
 
 }

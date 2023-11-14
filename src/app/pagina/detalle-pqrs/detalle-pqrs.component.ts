@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CrearPqrsDTO } from 'src/app/modelo/crear-pqrs-dto';
-import { InfoPqrsDTO } from 'src/app/modelo/info-pqrs-dto';
+import { CrearPqrsDTO } from 'src/app/modelo/paciente/crear-pqrs-dto';
+import { InfoPqrsDTO } from 'src/app/modelo/paciente/info-pqrs-dto';
 import { PqrsService } from 'src/app/servicios/pqrs.service';
 
 @Component({

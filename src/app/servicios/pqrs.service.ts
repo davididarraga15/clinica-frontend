@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { InfoPqrsDTO } from '../modelo/info-pqrs-dto';
-import { CrearPqrsDTO } from '../modelo/crear-pqrs-dto';
+import { InfoPqrsDTO } from '../modelo/paciente/info-pqrs-dto';
+import { CrearPqrsDTO } from '../modelo/paciente/crear-pqrs-dto';
 
 @Injectable({
   providedIn: 'root'

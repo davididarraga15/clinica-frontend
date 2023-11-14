@@ -57,7 +57,7 @@
                     <label class="col-sm-2 col-form-label">Foto </label><br/>
                     <input type="file" name="fotoUrl" id="fileInput" style="display: none;" required (change)="onFileChange($event)" />
                     <label for="fileInput" class="custom-file-upload"> <i class="fa-solid fa-upload me-2" style="color: #ffffff;"></i> Subir foto </label>
-                    <p class="col-sm-2 col-form-label">{{archivoCargado}}</p>
+                    <p class="col-sm-2 col-form-label">{{archivoCargado || mensajeConsola }}</p>
                 </div>
             
             

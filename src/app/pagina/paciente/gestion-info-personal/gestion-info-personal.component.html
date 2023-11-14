@@ -1,0 +1,65 @@
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0" ><i class="fa-solid fa-pen-to-square me-3" style="color: #76a5af;"></i>Actualizar información del paciente</h5>
+    </div>
+
+    <div class="card-body p-5">
+        <form #f="ngForm" (ngSubmit)="actualizar()">
+
+        
+            <br/>
+            <div>
+                <label class="col-sm-2 col-form-label">Cédula </label><br/>
+                <div class="col-sm-10">
+                    <input #codigo="ngModel" [ngClass]="codigo.invalid && (codigo.dirty || codigo.touched) ? 'is-invalid' : ''" type="text" name="codigo" class="form-control" required [(ngModel)]="editarPerfilPacienteDTO.codigo" maxlength="10"/>
+                </div>
+
+            </div>
+        
+            <br/>
+            <div>
+                <label class="col-sm-2 col-form-label">Ciudad </label><br/>
+                
+                <div class="col-sm-10">
+                    <input #ciudad="ngModel" [ngClass]="ciudad.invalid && (ciudad.dirty || ciudad.touched) ? 'is-invalid' : ''" type="text" name="ciudad" class="form-control" required [(ngModel)]="editarPerfilPacienteDTO.ciudad" />
+                </div>
+
+            </div>
+        
+            <br/>
+            <div>
+                <label class="col-sm-2 col-form-label">Teléfono</label><br/>
+
+                <div class="col-sm-10">
+                    <input #telefono="ngModel" [ngClass]="telefono.invalid && (telefono.dirty || telefono.touched) ? 'is-invalid' : ''" type="text" name="telefono" class="form-control" required [(ngModel)]="editarPerfilPacienteDTO.telefono" />
+                </div>
+
+            </div>
+
+            <br/>
+            <div>
+                <label class="col-sm-2 col-form-label">Alergias </label><br/>
+                <div class="col-sm-10"> 
+                    <input #alergias="ngModel" [ngClass]="alergias.invalid && (alergias.dirty || alergias.touched) ? 'is-invalid' : ''" type="text" name="alergias" class="form-control" required [(ngModel)]="editarPerfilPacienteDTO.alergias" />
+                </div>
+
+            </div>
+        
+    
+            <br/>
+            <div>
+                <label class="col-sm-2 col-form-label">Foto </label><br/>
+                <input type="file" name="fotoUrl" id="fileInput" style="display: none;" required (change)="onFileChange($event)" />
+                <label for="fileInput" class="custom-file-upload"> <i class="fa-solid fa-upload me-2" style="color: #ffffff;"></i> Actualizar foto </label>
+                <p class="col-sm-2 col-form-label">{{archivoCargado || mensajeConsola }}</p>
+                
+            </div>
+        
+        
+            <br/>
+            <button class="btn btn-success" type="submit" [disabled]="f.invalid"> <i class="fa-solid fa-file-pen me-2" style="color: #ffffff;"></i>Actualizar información </button>
+
+
+        </form>
+    </div>
+</div>
