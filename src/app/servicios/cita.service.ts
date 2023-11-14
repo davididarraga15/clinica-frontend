@@ -7,35 +7,36 @@ import { AgendarCitaDTO } from '../modelo/paciente/agendar-cita-dto';
 })
 export class CitaService {
 
-  infoCita: InfoCitaDTO[];
-  cita: AgendarCitaDTO[];
+  cita: InfoCitaDTO[];
   
 
   constructor() {
-    this.infoCita = [];
     this.cita = [];
 
-    this.infoCita.push({
-      codigo: 1, especialidad: "NEUROLOGIA", fechaCita: '2023-09-29', horaCita: "7:00", nombreMedico: "pepe", nombrePaciente: "pepe"
+    this.cita.push({
+      codigo: 1, especialidad: "NEUROLOGIA", fechaCita: '2023-09-29', horaCita: "7:00", nombreMedico: "pepe", nombrePaciente: "pepe3"
     });
 
-    this.infoCita.push({
-      codigo: 2, especialidad: "NEUROLOGIA", fechaCita: '2023-09-29', horaCita: "7:00", nombreMedico: "pepe2", nombrePaciente: "pepe2"
+    this.cita.push({
+      codigo: 2, especialidad: "NEUROLOGIA", fechaCita: '2023-09-29', horaCita: "7:00", nombreMedico: "pepe2", nombrePaciente: "pepe23"
     });
 
   }
 
   public listar(): InfoCitaDTO[] {
-    return this.infoCita;
-  }
-  public obtener(codigo: number): InfoCitaDTO | undefined {
-    return this.infoCita.find(infoCita => infoCita.codigo == codigo);
-  }
-  public agendarCita(cita: AgendarCitaDTO) {
-    let codigo = this.cita.length + 1;
-    this.cita.push({
-      codigoMedico: cita.codigoMedico, codigoPaciente: cita.codigoPaciente,motivoCita: cita.motivoCita, fechaCita: cita.fechaCita, horaCita: cita.horaCita
-    })
+    return this.cita;
   }
 
+  public obtener(codigo: number): InfoCitaDTO | undefined {
+    return this.cita.find(cita => cita.codigo == codigo);
+  }
+
+  public agendarCita(cita: AgendarCitaDTO) {
+    let codigo = this.cita.length + 1;
+
+    this.cita.push({ codigo: codigo, especialidad: cita.especialidad, fechaCita: cita.fechaCita, horaCita: cita.horaCita, nombreMedico: cita.nombreMedico, nombrePaciente: cita.nombrePaciente });    
+  }
+
+
+  //info : agendar
 }

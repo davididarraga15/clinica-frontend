@@ -11,17 +11,9 @@ import { CitaService } from 'src/app/servicios/cita.service';
 export class AgendarCitaComponent {
 
   agendarCitaDTO: AgendarCitaDTO;
-  infoCitaDTO: InfoCitaDTO;
-  fechaCita: string = '';
-  especialidades: string[];
 
   constructor(private citaService: CitaService) {
-
     this.agendarCitaDTO = new AgendarCitaDTO();
-    this.infoCitaDTO = new InfoCitaDTO();
-    this.especialidades = [];
-
-
   }
 
   public agendarCita(){
@@ -29,12 +21,7 @@ export class AgendarCitaComponent {
   }
 
   public seleccionar(codigo:number){
-    this.infoCitaDTO.codigo = codigo;
+    this.agendarCitaDTO.codigoCita = codigo;
   }
-
-
-
-
-
 
 }

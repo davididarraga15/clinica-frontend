@@ -8,23 +8,25 @@
 
             <br/>
             <div class="mb-3">
-                <button type="button" routerLink="/gestion-pqrs" class="btn btn-primary w-100 py-2 btn btn-success boton-volver"><i class="fa-solid fa-angles-left" style="color: #ffffff;"></i> Volver </button>
+                <button type="button" routerLink="/gestionar-citas" class="btn btn-primary w-100 py-2 btn btn-success boton-volver"><i class="fa-solid fa-angles-left" style="color: #ffffff;"></i> Volver </button>
             </div>
             <br/>
 
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Especialidad </label>
                 <div class="col-sm-10">
-                    <select name="tipo" required class="form-select" [(ngModel)]="infoCitaDTO.especialidad" >
+                    <select name="tipo" required class="form-select" [(ngModel)]="agendarCitaDTO.especialidad" >
     
                         <option value="" selected disabled>Seleccione un tipo</option>
-                        <option value="MedicinaGenerañ" >Medicina General</option>
+                        <option value="Medicina General" >Medicina General</option>
                         <option value="Odontologia" >Odontologia</option>
                         <option value="Pediatria" >Pediatria</option>
                         <option value="Neurologia" >Neurologia</option>
                     </select>
                 </div>
             </div>
+
+        
 
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Motivo </label>
@@ -51,7 +53,7 @@
                             <tr>
                                 <td><input class="form-check-input" type="checkbox" (change)="seleccionar(1)" /></td>
                                 <td><p>1</p></td>
-                                <td><p>OFTALMOLOGÍA</p></td>
+                                <td><p>MEDICINA GENERAL</p></td>
                                 <td><p>2023-10-20</p></td>
                                 <td><p>7:00 am</p></td>
                                 <td><p>Dr. Pedrito</p></td>
@@ -60,7 +62,7 @@
                             <tr>
                                 <td><input class="form-check-input" type="checkbox"  (change)="seleccionar(2)" /></td>
                                 <td><p>2</p></td>
-                                <td><p>GENERAL</p></td>
+                                <td><p>ODONTOLOGIA</p></td>
                                 <td><p>2023-10-10</p></td>
                                 <td><p>7:40 am</p></td>
                                 <td><p>Dr. Juanito</p></td>
@@ -69,10 +71,10 @@
                             <tr>
                                 <td><input class="form-check-input" type="checkbox"  (change)="seleccionar(3)" /></td>
                                 <td><p>2</p></td>
-                                <td><p>NEUROLOGIA</p></td>
-                                <td><p>2023-10-10</p></td>
-                                <td><p>9:50 am</p></td>
-                                <td><p>Dra. Laura</p></td>
+                                <td ><p>NEUROLOGIA</p></td>
+                                <td name="fechaCita" required [(ngModel)]="agendarCitaDTO.fechaCita"><p>2023-10-10</p></td>
+                                <td name="horaCita" required [(ngModel)]="agendarCitaDTO.horaCita"><p>9:50 am</p></td>
+                                <td name="nombreMedico" required [(ngModel)]="agendarCitaDTO.nombreMedico"><p>Dra. Laura</p></td>
                             </tr>
                         </tbody>
                     </table>
