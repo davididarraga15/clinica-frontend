@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+        <h5 class="mb-0" ><i class="fa-solid fa-unlock-keyhole me-3" style="color: #76a5af;" ></i>Restablecer contraseña </h5>
+    </div>
+
+    <div class="card-body p-5">
+        <form>
+        
+            <div>
+                <div class="form-floating"> 
+                    <input #correo="ngModel" [ngClass]="correo.invalid && (correo.dirty || correo.touched) ? 'is-invalid' : ''" type="email" name="correo" class="form-control" id="floatingInput" placeholder="name@example.com" required [(ngModel)]="restablecerContraseniaDTO.correo" email />
+                    <label class="col-sm-2 col-form-label" >Correo electrónico </label><br/>
+                </div>
+
+            </div>
+        
+            <br/>
+            <div>
+
+                <div class="form-floating"> 
+                    <input #contrasenia="ngModel" [ngClass]="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched) ? 'is-invalid' : ''" type="password" name="contrasenia" class="form-control" id="floatingPassword" placeholder="Password" required [(ngModel)]="restablecerContraseniaDTO.contraseniaNueva" minlength=8/>
+                    <label class="col-sm-2 col-form-label">Contraseña </label><br/>
+                </div>
+
+            </div>
+        
+            <br/>
+            
+            <button type="submit" class="btn btn-primary w-100 py-2 btn btn-success boton-iniciar">Restablecer </button>
+        
+            <div style="margin-top: 3%;">
+                <a class="registrate" routerLink="/login"><strong>Volver al inicio de sesion</strong></a>
+            </div>
+
+    
+        </form>
+    </div>
+</div>

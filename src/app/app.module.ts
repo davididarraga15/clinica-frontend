@@ -15,6 +15,7 @@ import { DetallePqrsComponent } from './pagina/paciente/detalle-pqrs/detalle-pqr
 import { GestionInfoPersonalComponent } from './pagina/paciente/gestion-info-personal/gestion-info-personal.component';
 import { AgendarCitaComponent } from './pagina/paciente/agendar-cita/agendar-cita.component';
 import { GestionarCitasComponent } from './pagina/paciente/gestionar-citas/gestionar-citas.component';
+import { RestablecerContraseniaComponent } from './pagina/restablecer-contrasenia/restablecer-contrasenia.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { GestionarCitasComponent } from './pagina/paciente/gestionar-citas/gesti
     GestionInfoPersonalComponent,
     AgendarCitaComponent,
     GestionarCitasComponent,
+    RestablecerContraseniaComponent,
     
   ],
   imports: [

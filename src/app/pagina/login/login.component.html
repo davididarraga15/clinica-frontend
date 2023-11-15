@@ -20,7 +20,10 @@
                 <div class="form-floating"> 
                     <input #contrasenia="ngModel" [ngClass]="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched) ? 'is-invalid' : ''" type="password" name="contrasenia" class="form-control" id="floatingPassword" placeholder="Password" required [(ngModel)]="loginDTO.contrasenia" minlength=8/>
                     <label class="col-sm-2 col-form-label">Contraseña </label><br/>
+                    <a class="registrate" routerLink="/restablecer-contrasenia"><strong>¿Olvidó su contraseña?</strong></a>
                 </div>
+
+    
 
             </div>
         
