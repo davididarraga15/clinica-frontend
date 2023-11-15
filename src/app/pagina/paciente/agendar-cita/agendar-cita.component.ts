@@ -11,9 +11,14 @@ import { CitaService } from 'src/app/servicios/cita.service';
 export class AgendarCitaComponent {
 
   agendarCitaDTO: AgendarCitaDTO;
+  citaPacienteMedico: InfoCitaDTO [];
+  auxCitaPacienteMedico: InfoCitaDTO [];
+  especialidadSeleccionada: string = "";
 
   constructor(private citaService: CitaService) {
     this.agendarCitaDTO = new AgendarCitaDTO();
+    this.citaPacienteMedico = citaService.listarCitaPacienteMedico();
+    this.auxCitaPacienteMedico = this.citaPacienteMedico;
   }
 
   public agendarCita(){
@@ -22,6 +27,16 @@ export class AgendarCitaComponent {
 
   public seleccionar(codigo:number){
     this.agendarCitaDTO.codigoCita = codigo;
+  }
+
+  public filtrarTabla(event: any) {
+    let especialidadSeleccionada = event.target.value;
+
+    if(especialidadSeleccionada == ""){
+      this.auxCitaPacienteMedico = this.citaPacienteMedico;
+    }else{
+      this.auxCitaPacienteMedico = this.citaPacienteMedico.filter(c => c.especialidad == especialidadSeleccionada);
+    }
   }
 
 }

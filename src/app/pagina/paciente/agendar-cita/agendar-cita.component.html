@@ -15,10 +15,10 @@
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Especialidad </label>
                 <div class="col-sm-10">
-                    <select name="tipo" required class="form-select" [(ngModel)]="agendarCitaDTO.especialidad" >
-    
+                    <select name="especialidad" required class="form-select" [(ngModel)]="agendarCitaDTO.especialidad" (change)="filtrarTabla($event)" [(ngModel)]="especialidadSeleccionada" >
                         <option value="" selected disabled>Seleccione un tipo</option>
-                        <option value="Medicina General" >Medicina General</option>
+                        <option value="" >Ver todas</option>
+                        <option value="Medicina general" >Medicina general</option>
                         <option value="Odontologia" >Odontologia</option>
                         <option value="Pediatria" >Pediatria</option>
                         <option value="Neurologia" >Neurologia</option>
@@ -50,31 +50,13 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr>
+                            <tr *ngFor="let item of auxCitaPacienteMedico">
                                 <td><input class="form-check-input" type="checkbox" (change)="seleccionar(1)" /></td>
-                                <td><p>1</p></td>
-                                <td><p>MEDICINA GENERAL</p></td>
-                                <td><p>2023-10-20</p></td>
-                                <td><p>7:00 am</p></td>
-                                <td><p>Dr. Pedrito</p></td>
-                            </tr>
-
-                            <tr>
-                                <td><input class="form-check-input" type="checkbox"  (change)="seleccionar(2)" /></td>
-                                <td><p>2</p></td>
-                                <td><p>ODONTOLOGIA</p></td>
-                                <td><p>2023-10-10</p></td>
-                                <td><p>7:40 am</p></td>
-                                <td><p>Dr. Juanito</p></td>
-                            </tr>
-
-                            <tr>
-                                <td><input class="form-check-input" type="checkbox"  (change)="seleccionar(3)" /></td>
-                                <td><p>2</p></td>
-                                <td ><p>NEUROLOGIA</p></td>
-                                <td name="fechaCita" required [(ngModel)]="agendarCitaDTO.fechaCita"><p>2023-10-10</p></td>
-                                <td name="horaCita" required [(ngModel)]="agendarCitaDTO.horaCita"><p>9:50 am</p></td>
-                                <td name="nombreMedico" required [(ngModel)]="agendarCitaDTO.nombreMedico"><p>Dra. Laura</p></td>
+                                <td><p>{{item.codigo}}</p></td>
+                                <td><p>{{item.especialidad}}</p></td>
+                                <td><p>{{item.fechaCita}}</p></td>
+                                <td><p>{{item.horaCita}}</p></td>
+                                <td><p>{{item.nombreMedico}}</p></td>
                             </tr>
                         </tbody>
                     </table>
