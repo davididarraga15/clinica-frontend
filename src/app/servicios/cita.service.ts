@@ -1,3 +1,6 @@
+import { HttpClient } from '@angular/common/http';
+import { MensajeDTO } from '../modelo/extras/mensaje-dto';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { InfoCitaDTO } from '../modelo/paciente/info-cita-dto';
 import { AgendarCitaDTO } from '../modelo/paciente/agendar-cita-dto';
@@ -9,9 +12,10 @@ export class CitaService {
 
   cita: InfoCitaDTO[];
   citaPacienteMedico: InfoCitaDTO[]; //Son las citas disponbibles que se muestran al momento de agendar cita 
+  //private clinicaURL = 'http://localhost:8080/api/auth';
   
 
-  constructor() {
+  constructor( http: HttpClient) {
     this.cita = [];
 
     this.cita.push({
@@ -61,6 +65,10 @@ export class CitaService {
 
     this.cita.push({ codigo: codigo, especialidad: cita.especialidad, fechaCita: cita.fechaCita, horaCita: cita.horaCita, nombreMedico: cita.nombreMedico, nombrePaciente: cita.nombrePaciente });    
   }
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
   //info : agendar

@@ -4,8 +4,7 @@
     </div>
 
     <div class="card-body p-5">
-        <form>
-        
+        <form #f="ngForm">
             <div>
                 <div class="form-floating"> 
                     <input #correo="ngModel" [ngClass]="correo.invalid && (correo.dirty || correo.touched) ? 'is-invalid' : ''" type="email" name="correo" class="form-control" id="floatingInput" placeholder="name@example.com" required [(ngModel)]="loginDTO.correo" email />
@@ -29,12 +28,11 @@
         
             <br/>
             
-            <button type="submit" class="btn btn-primary w-100 py-2 btn btn-success boton-iniciar">Iniciar sesion</button>
+            <button type="submit" class="btn btn-primary w-100 py-2 btn btn-success boton-iniciar" (click)="login()">Iniciar sesion</button>
         
             <div style="margin-top: 3%;">
                 <p>¿No tienes una cuenta? <a class="registrate" routerLink="/registro"><strong>Registrate</strong></a></p>
             </div>
-
     
         </form>
     </div>

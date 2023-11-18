@@ -11,13 +11,17 @@ import { AgendarCitaComponent } from './pagina/paciente/agendar-cita/agendar-cit
 import { GestionarCitasComponent } from './pagina/paciente/gestionar-citas/gestionar-citas.component';
 import { RestablecerContraseniaComponent } from './pagina/restablecer-contrasenia/restablecer-contrasenia.component';
 
+import { LoginGuard } from './guards/permiso.service';
+import { RolesGuard } from './guards/roles.service';
+import { PermisoService } from './guards/permiso.service';
+
 const routes: Routes = [
 { path: "", component: InicioComponent },
-{ path: "login", component: LoginComponent },
-{ path: "registro", component: RegistroComponent },
-{ path: "gestion-pqrs", component: GestionPqrsComponent },
-{ path: "crear-pqrs", component: CrearPqrsComponent },
-{ path: "detalle-pqrs/:codigo", component: DetallePqrsComponent },
+{ path: "login", component:LoginComponent, canActivate: [LoginGuard] },
+{ path: "registro", component: RegistroComponent, canActivate: [LoginGuard] },
+{ path: "gestion-pqrs", component: GestionPqrsComponent, canActivate: [RolesGuard], data: { expectedRole: ["paciente"] } },
+{ path: "crear-pqrs", component: CrearPqrsComponent, canActivate: [RolesGuard], data: { expectedRole: ["paciente"] } },
+{ path: "detalle-pqrs/:codigo", component: DetallePqrsComponent, canActivate: [RolesGuard], data: { expectedRole: ["paciente"] } },
 { path: "paciente/gestion-info-personal", component: GestionInfoPersonalComponent },
 { path: "agendar-cita", component: AgendarCitaComponent },
 { path: "gestionar-citas", component: GestionarCitasComponent },

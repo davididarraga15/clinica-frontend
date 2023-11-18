@@ -33,8 +33,12 @@
     background-color: #146c43; /* Color de fondo en el estado hover */
   }
 
-  input[type="file"] {
-    display: none; /* Ocultar el elemento input de tipo file */
-  }
+  /*input[type="file"] {
+   /* display: none; /* Ocultar el elemento input de tipo file */
   
+  
+  .boton{
+    width: 200%;
+    border-color: transparent;
+  }
  

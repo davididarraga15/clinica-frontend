@@ -4,7 +4,7 @@
         </div>
 
         <div class="card-body p-5">
-            <form #f="ngForm" (ngSubmit)="registrar()">
+            <form #f="ngForm">
 
                 <div>
                     <label class="col-sm-2 col-form-label">Nombre </label><br/>
@@ -52,14 +52,22 @@
                     </div>
                 </div>
             
+                
                 <br/>
-                <div>
-                    <label class="col-sm-2 col-form-label">Foto </label><br/>
-                    <input type="file" name="fotoUrl" id="fileInput" style="display: none;" required (change)="onFileChange($event)" />
-                    <label for="fileInput" class="custom-file-upload"> <i class="fa-solid fa-upload me-2" style="color: #ffffff;"></i> Subir foto </label>
-                    <p class="col-sm-2 col-form-label">{{archivoCargado || mensajeConsola }}</p>
+
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Foto: </label>
+                    <div class="col-sm-8">
+                        <input type="file" class="form-control" name="foto" (change)="onFileChange($event)" />
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" [disabled]="archivos == null" class="btn btn-primary" (click)="subirImagen()">
+                            <i class="fa-solid fa-cloud-arrow-up me-2"></i>Subir Foto
+                        </button>
+                    </div>
                 </div>
-            
+
+             
             
                 <br/>
                 <div>
@@ -124,7 +132,8 @@
                 <div class="alert alert-danger" role="alert" *ngIf="!sonIguales()">Las contraseñas no coinciden</div>
 
                 <br/>
-                <button class="btn btn-success" type="submit" [disabled]="f.invalid || !sonIguales()"> <i class="fa-solid fa-user-plus me-2" style="color: #ffffff;"></i>Registrarse </button>
+                <button class="btn btn-success" type="submit" [disabled]="f.invalid || !sonIguales()" (click)="registrar()"> <i class="fa-solid fa-user-plus me-2" style="color: #ffffff;"></i>Registrarse </button>
+                <app-alerta [alerta]="alerta"></app-alerta>
 
 
             </form>

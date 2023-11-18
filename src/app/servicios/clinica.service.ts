@@ -21,10 +21,7 @@ export class ClinicaService {
     return this.http.get<MensajeDTO>(`${this.clinicaURL}/listarTipoSangre`);
   }
 
-  public listarEspecialidades(): Observable<MensajeDTO>{
-    return this.http.get<MensajeDTO>(`${this.clinicaURL}/listarEspecialidades`);
-  }
-
+ 
   
 
 

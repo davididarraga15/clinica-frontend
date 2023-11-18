@@ -12,7 +12,8 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   //private authURL = 'http://localhost:8080/api/auth';
-  private authURL = 'http://localhost:8080/api/auth';
+  private authURL = 'http://localhost:8080/api/auth'; 
+
 
   constructor(private http:HttpClient) { }
 

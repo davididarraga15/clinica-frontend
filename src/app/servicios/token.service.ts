@@ -30,14 +30,18 @@ export class TokenService {
     return false;
   }
 
-  public login(token: string){
-    this.setToken(token);
-    this.router.navigate(['/']);
-  }
-
   public logout(){
     window.sessionStorage.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]).then(() => {
+      window.location.reload();
+    });
+  }
+
+  public login(token: string){
+    this.setToken(token);
+    this.router.navigate(["/"]).then(() => {
+      window.location.reload();
+    });
   }
 
   private decodePlayLoad(token: string): any{
@@ -45,6 +49,24 @@ export class TokenService {
     const playLoadDecode = Buffer.from(playLoad, 'base64').toString('ascii');
     const values = JSON.parse(playLoadDecode);
     return values;
+  }
+
+  public getEmail():string{
+    const token = this.getToken();
+    if(token){
+      const values = this.decodePlayLoad(token);
+      return values.sub;
+    }
+    return "";
+  }
+
+  public getRole():string[]{
+    const token = this.getToken();
+    if(token){
+      const values = this.decodePlayLoad(token);
+      return values.rol;
+    }
+    return [];
   }
 
 

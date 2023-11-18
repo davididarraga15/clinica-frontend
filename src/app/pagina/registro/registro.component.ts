@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { RegistroPacienteDTO } from 'src/app/modelo/paciente/registro-paciente-dto';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { ClinicaService } from 'src/app/servicios/clinica.service';
+import { ImagenService } from 'src/app/servicios/imagen.service';
+import { Alerta } from 'src/app/modelo/alerta';
 
 @Component({
   selector: 'app-registro',
@@ -19,7 +21,10 @@ export class RegistroComponent {
   mensajeConsola: string = "";
 
 
-  constructor(private authService: AuthService, private clinicaService: ClinicaService){
+  alerta!: Alerta;
+
+
+  constructor(private authService: AuthService, private clinicaService: ClinicaService, private imagenService: ImagenService){
     this.registroPacienteDTO = new RegistroPacienteDTO();
     this.eps = [];
     this.cargarEps();
@@ -29,12 +34,22 @@ export class RegistroComponent {
 
   public registrar(){
 
-    if(this.archivos != null && this.archivos.length > 0){
-      console.log(this.registroPacienteDTO);
+    if (this.registroPacienteDTO.fotoUrl.length != 0){
+      
+      this.authService.registrarPaciente(this.registroPacienteDTO).subscribe({
+        next: data => {
+          this.alerta = { mensaje: data.respuesta, tipo: "success" };
+        },
+        error: error => {
+          this.alerta = { mensaje: error.error.mensaje, tipo: "danger" };
+        }
+      });
+
     }else{
-      console.log("Debe cargar una foto");
-      this.mensajeConsola = "Debe cargar una foto";
+      console.log("Debe subir una imagen");
+      this.alerta = { mensaje: "Debe subir una imagen", tipo: "danger" };
     }
+
   }
 
   public sonIguales():boolean{
@@ -42,7 +57,6 @@ export class RegistroComponent {
   }
 
   public cargarTipoSangre() {
-    this.tipoSangre.push("A+");
     this.clinicaService.listarTipoSangre().subscribe({
       next: data => {
         this.tipoSangre = data.respuesta;
@@ -54,7 +68,7 @@ export class RegistroComponent {
   }
 
   public cargarEps() {
-    this.eps.push("SURA");
+
     this.clinicaService.listarEPS().subscribe({
       next: data => {
         this.eps = data.respuesta;
@@ -65,15 +79,36 @@ export class RegistroComponent {
     });
   }
 
-  public onFileChange(event:any){
-    if (event.target.files.length > 0) {
-      const files = event.target.files;
-      this.archivoCargado = files[0].name;
-      console.log(files);
-      this.archivos = event.target.files;
+  public subirImagen() {
+
+    if (this.archivos != null && this.archivos.length > 0) {
+      const formData = new FormData();
+      formData.append('file', this.archivos[0]);
+
+      this.imagenService.subir(formData).subscribe({
+        next: data => {
+          this.registroPacienteDTO.fotoUrl = data.respuesta.url;
+        },
+        error: error => {
+          this.alerta = { mensaje: error.error.mensaje, tipo: "danger" };
+        }
+      });
+
+    }else {
+      this.alerta = { mensaje: 'Debe seleccionar una imagen y subirla', tipo: "danger" };
     }
   }
 
+  
+
+  public onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      this.registroPacienteDTO.fotoUrl = event.target.files[0].name;
+      const files = event.target.files;
+      this.archivoCargado = files[0].name;
+      this.archivos = event.target.files;
+    }
+  }
 
 
 }

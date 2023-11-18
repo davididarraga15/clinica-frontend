@@ -1,6 +1,6 @@
 export interface MensajeDTO {
 
     error: boolean;
-    //mensaje: string;
+    mensaje: string;
     respuesta: any;
 }

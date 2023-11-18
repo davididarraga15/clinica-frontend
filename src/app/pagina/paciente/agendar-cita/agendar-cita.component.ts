@@ -29,6 +29,7 @@ export class AgendarCitaComponent {
     this.agendarCitaDTO.codigoCita = codigo;
   }
 
+
   public filtrarTabla(event: any) {
     let especialidadSeleccionada = event.target.value;
 

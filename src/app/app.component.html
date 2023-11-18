@@ -14,18 +14,30 @@
       
       <ul class="nav col-7 mb-2 justify-content-center mb-md-0">
         <li><a routerLink="" class="nav-link px-2 text-white">Inicio</a></li>
-        <li><a routerLink="" class="nav-link px-2 text-white">Medicos</a></li>
+        
         <li><a routerLink="/gestionar-citas" class="nav-link px-2 text-white"> Gestionar Citas</a></li>
         <li><a routerLink="/gestion-pqrs" class="nav-link px-2 text-white">Gestión PQRS</a></li>
         <li><a routerLink="paciente/gestion-info-personal" class="nav-link px-2 text-white">Gestion Info</a></li>
       </ul>
       
-      <div class="col-2 text-end">
 
-        <button type="button" routerLink="/login" class="btn btn-outline-light me-2">Ingresar</button>
-        <button type="button" routerLink="/registro" class="btn btn-success">Registrarse</button>
+      <div *ngIf="!isLogged; then nologged else logged" class="col-0 text-end"></div>
+        <ng-template #nologged>
 
-      </div>
+          <div class="col-2 text-end">
+            <button type="button" routerLink="/login" class="btn btn-outline-light me-2">Ingresar</button>
+            <button type="button" routerLink="/registro" class="btn btn-success">Registrarse</button>
+          </div>
+
+        </ng-template>
+
+        <ng-template #logged>
+          <div class="col- text-end">
+            <label class="me-2" >Hola, {{correo}}</label>
+            <button type="button" (click)="logout()" class="btn btn-success">Cerrar sesión</button>
+          </div>
+        </ng-template>
+      
 
     </div>
 

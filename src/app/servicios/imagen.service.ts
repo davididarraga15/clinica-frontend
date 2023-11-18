@@ -18,9 +18,8 @@ export class ImagenService {
   }
   
   public eliminar(imagenDTO: ImagenDTO): Observable<MensajeDTO> {
-    return this.http.request<MensajeDTO>('delete', `${this.imgURL}/eliminar`, {
-      body:
-        imagenDTO
-    });
+    return this.http.request<MensajeDTO>('delete', `${this.imgURL}/eliminar`, {body:imagenDTO});
   }
+
 }
+//http://localhost:8080/imagenes/subir
