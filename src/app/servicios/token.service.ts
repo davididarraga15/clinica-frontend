@@ -60,15 +60,13 @@ export class TokenService {
     return "";
   }
 
-  public getRole():string[]{
+  public getRole():string{
     const token = this.getToken();
     if(token){
       const values = this.decodePlayLoad(token);
       return values.rol;
     }
-    return [];
+    return "";
   }
-
-
 
 }

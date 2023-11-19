@@ -8,9 +8,10 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'Clinica Salvese quien pueda';
+  title = 'Clínica Sálvese quien pueda';
   isLogged = false;
   correo: string = "";
+  rol: string = "";
 
 
   constructor(private tokenService: TokenService){}
@@ -19,6 +20,8 @@ export class AppComponent implements OnInit{
     this.isLogged = this.tokenService.isLogged();
     if(this.isLogged){
       this.correo = this.tokenService.getEmail();
+      this.rol = this.tokenService.getRole();
+      console.log(this.rol);
     }
     
   }
@@ -26,6 +29,8 @@ export class AppComponent implements OnInit{
   public logout(){
     this.tokenService.logout();
   }
+
+
 
 }
 

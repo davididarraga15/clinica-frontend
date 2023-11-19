@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +17,11 @@ import { AgendarCitaComponent } from './pagina/paciente/agendar-cita/agendar-cit
 import { GestionarCitasComponent } from './pagina/paciente/gestionar-citas/gestionar-citas.component';
 import { RestablecerContraseniaComponent } from './pagina/restablecer-contrasenia/restablecer-contrasenia.component';
 import { AlertaComponent } from './pagina/alerta/alerta.component';
+import { UsuarioInterceptor } from './interceptor/usuario.interceptor';
+import { MenuPacienteComponent } from './pagina/paciente/menu-paciente/menu-paciente.component';
+import { InicioPacienteComponent } from './pagina/paciente/inicio-paciente/inicio-paciente.component';
+
+
 
 @NgModule({
   declarations: [
@@ -32,6 +37,8 @@ import { AlertaComponent } from './pagina/alerta/alerta.component';
     GestionarCitasComponent,
     RestablecerContraseniaComponent,
     AlertaComponent,
+    MenuPacienteComponent,
+    InicioPacienteComponent,
     
   ],
   imports: [
@@ -40,7 +47,7 @@ import { AlertaComponent } from './pagina/alerta/alerta.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: UsuarioInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
