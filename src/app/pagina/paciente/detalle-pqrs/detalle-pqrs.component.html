@@ -20,8 +20,8 @@
                <tr>
                     <th class="letraTabla"><p *ngIf="pqrs"> {{pqrs.codigo}}</p></th>
                     <th class="letraTabla"><p *ngIf="pqrs"> {{pqrs.tipo}}</p></th>
-                    <th class="letraTabla"><p *ngIf="pqrs"> {{pqrs.fecha}}</p></th>
-                    <th class="letraTabla"> <span *ngIf="pqrs" [ngClass]="pqrs.estado === 'ACTIVO' ? 'text-bg-success' : 'text-bg-danger'" class="badge">{{pqrs.estado}}</span></th>
+                    <th class="letraTabla"><p *ngIf="pqrs"> {{pqrs.fechaCreacion}}</p></th>
+                    <th class="letraTabla"> <span *ngIf="pqrs" [ngClass]="(pqrs.estado == 'NUEVO' ? 'text-bg-success-nuevo' : pqrs.estado == 'EN_PROCESO' ? 'text-bg-success' : pqrs.estado == 'ARCHIVADO' ? 'text-bg-success-archivado' : 'text-bg-danger')" class="badge">{{pqrs.estado}}</span></th>
                </tr>
 
             </tbody>

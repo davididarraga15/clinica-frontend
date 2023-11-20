@@ -4,18 +4,8 @@
     </div>
 
     <div class="card-body p-5">
-        <form #f="ngForm" (ngSubmit)="actualizar()">
+        <form #f="ngForm">
 
-        
-            <br/>
-            <div>
-                <label class="col-sm-2 col-form-label">Cédula </label><br/>
-                <div class="col-sm-10">
-                    <input #codigo="ngModel" [ngClass]="codigo.invalid && (codigo.dirty || codigo.touched) ? 'is-invalid' : ''" type="text" name="codigo" class="form-control" required [(ngModel)]="editarPerfilPacienteDTO.codigo" maxlength="10"/>
-                </div>
-
-            </div>
-        
             <br/>
             <div>
                 <label class="col-sm-2 col-form-label">Ciudad </label><br/>
@@ -57,7 +47,11 @@
         
         
             <br/>
-            <button class="btn btn-success" type="submit" [disabled]="f.invalid"> <i class="fa-solid fa-file-pen me-2" style="color: #ffffff;"></i>Actualizar información </button>
+            <button class="btn btn-success" type="submit" [disabled]="f.invalid" (click)="actualizar()"> <i class="fa-solid fa-file-pen me-2" style="color: #ffffff;"></i>Actualizar información </button>
+
+            <br/>
+            <br/>
+            <button class="btn btn-success boton-eliminar" type="submit" [disabled]="f.invalid" (click)="eliminarCuenta()"> <i class="fa-solid fa-file-pen me-2" style="color: #ffffff;"></i>Eliminar cuenta</button>
 
 
         </form>

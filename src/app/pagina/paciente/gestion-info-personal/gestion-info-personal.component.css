@@ -36,4 +36,8 @@
   input[type="file"] {
     display: none; /* Ocultar el elemento input de tipo file */
   }
+
+  .boton-eliminar{
+    background-color: red;
+  }
   

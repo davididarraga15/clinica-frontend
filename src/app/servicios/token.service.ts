@@ -69,4 +69,15 @@ export class TokenService {
     return "";
   }
 
+  public getCodigo(): number {
+    const token = this.getToken();
+
+    if (token) {
+      const values = this.decodePlayLoad(token);
+      return values.id;
+    }
+    return 0;
+  }
+
+
 }

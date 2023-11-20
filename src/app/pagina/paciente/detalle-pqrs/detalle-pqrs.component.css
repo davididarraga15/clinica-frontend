@@ -22,3 +22,13 @@
     width: 10% !important;
     height: 20%;
 }
+
+.text-bg-success-nuevo{
+    background-color: gold;
+    color:white;
+}
+
+.text-bg-success-archivado{
+    background-color: blue;
+    color:white;
+}

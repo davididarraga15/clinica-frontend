@@ -11,10 +11,14 @@ import { AgendarCitaComponent } from './pagina/paciente/agendar-cita/agendar-cit
 import { GestionarCitasComponent } from './pagina/paciente/gestionar-citas/gestionar-citas.component';
 import { RestablecerContraseniaComponent } from './pagina/restablecer-contrasenia/restablecer-contrasenia.component';
 import { InicioPacienteComponent } from './pagina/paciente/inicio-paciente/inicio-paciente.component';
+import { InicioMedicoComponent } from './pagina/medico/inicio-medico/inicio-medico.component';
 
 import { LoginGuard } from './guards/permiso.service';
 import { RolesGuard } from './guards/roles.service';
 import { PermisoService } from './guards/permiso.service';
+import { CitasMedicasComponent } from './pagina/medico/citas-medicas/citas-medicas.component';
+import { DisponibilidadComponent } from './pagina/medico/disponibilidad/disponibilidad.component';
+import { HistorialCitasComponent } from './pagina/medico/historial-citas/historial-citas.component';
 
 const routes: Routes = [
 { path: "", component: InicioComponent },
@@ -28,6 +32,10 @@ const routes: Routes = [
 { path: "agendar-cita", component: AgendarCitaComponent, canActivate: [RolesGuard], data: { expectedRole: ["paciente"] } },
 { path: "gestionar-citas", component: GestionarCitasComponent, canActivate: [RolesGuard], data: { expectedRole: ["paciente"] } },
 { path: "restablecer-contrasenia", component: RestablecerContraseniaComponent },
+{ path: "inicio-medico", component: InicioMedicoComponent, canActivate: [RolesGuard], data: { expectedRole: ["medico"] } },
+{ path: "citas-medicas", component: CitasMedicasComponent, canActivate: [RolesGuard], data: { expectedRole: ["medico"] } },
+{ path: "disponibilidad", component: DisponibilidadComponent, canActivate: [RolesGuard], data: { expectedRole: ["medico"] } },
+{ path: "historial-citas", component: HistorialCitasComponent, canActivate: [RolesGuard], data: { expectedRole: ["medico"] } },
 { path: "**", pathMatch: "full", redirectTo: "" }
 ];
 

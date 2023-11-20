@@ -18,12 +18,11 @@
                     <select name="especialidad" required class="form-select" [(ngModel)]="agendarCitaDTO.especialidad" (change)="filtrarTabla($event)" [(ngModel)]="especialidadSeleccionada" >
                         <option value="" selected disabled>Seleccione un tipo</option>
                         <option value="" >Ver todas</option>
-                        <option value="Medicina general" >Medicina general</option>
-                        <option value="Odontologia" >Odontologia</option>
-                        <option value="Pediatria" >Pediatria</option>
-                        <option value="Neurologia" >Neurologia</option>
+                        <option [value]="item" *ngFor="let item of especialidades; index as i" >{{item}}</option>
+                    
                     </select>
                 </div>
+
             </div>
 
         
@@ -51,7 +50,7 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <tr *ngFor="let item of auxCitaPacienteMedico">
-                                <td><input class="form-check-input" type="checkbox" (change)="seleccionar(1)" /></td>
+                                <td><input class="form-check-input" type="checkbox" (change)="seleccionar(item.codigo)" /></td>
                                 <td><p>{{item.codigo}}</p></td>
                                 <td><p>{{item.especialidad}}</p></td>
                                 <td><p>{{item.fechaCita}}</p></td>

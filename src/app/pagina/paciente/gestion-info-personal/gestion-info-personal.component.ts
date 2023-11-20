@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { Alerta } from 'src/app/modelo/alerta';
 import { EditarPerfilPacienteDTO } from 'src/app/modelo/paciente/editar-perfil-paciente-dto';
+import { ImagenService } from 'src/app/servicios/imagen.service';
+import { PacienteService } from 'src/app/servicios/paciente.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-gestion-info-personal',
@@ -13,20 +17,46 @@ export class GestionInfoPersonalComponent {
   mensajeConsola: string = "";
 
   editarPerfilPacienteDTO: EditarPerfilPacienteDTO;
+  alerta!: Alerta;
 
-  constructor() {
+  constructor(private tokenService: TokenService, private pacienteService: PacienteService, private imagenService: ImagenService) {
     this.editarPerfilPacienteDTO = new EditarPerfilPacienteDTO();
+    this.actualizar();
+    this.eliminarCuenta();
   
   }
 
-  public actualizar(){
-    if(this.archivos != null && this.archivos.length > 0){
-      console.log(this.editarPerfilPacienteDTO);
-    }else{
-      console.log("Debe cargar una foto");
-      this.mensajeConsola = "Debe cargar una foto";
- 
+  public actualizar() {
+
+    let codigoPaciente = this.tokenService.getCodigo();
+
+    if (this.editarPerfilPacienteDTO.fotoUrl.length != 0) {
+      this.pacienteService.editarPerfil(this.editarPerfilPacienteDTO).subscribe({
+        next: data => {
+          this.alerta = { mensaje: data.respuesta, tipo: "success" };
+        },
+        error: error => {
+          this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
+        }
+      });
+    } else {
+      this.alerta = { mensaje: "Debe subir una imagen", tipo: "danger" };
     }
+  }
+
+  public eliminarCuenta() {
+
+    let codigoPaciente = this.tokenService.getCodigo();
+
+    this.pacienteService.eliminarCuenta(codigoPaciente).subscribe({
+      next: data => {
+        this.alerta = { mensaje: data.respuesta, tipo: "success" };
+      },
+      error: error => {
+        this.alerta = { mensaje: error.error.respuesta, tipo: "danger" };
+      }
+    });
+
   }
 
 

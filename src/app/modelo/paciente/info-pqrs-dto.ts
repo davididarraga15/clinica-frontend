@@ -2,7 +2,7 @@ export interface InfoPqrsDTO {
     codigo: number;
     tipo: string;
     motivo: string;
-    fecha: string;
+    fechaCreacion: string;
     estado: string;
     
     

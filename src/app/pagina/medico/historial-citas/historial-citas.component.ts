@@ -6,42 +6,32 @@ import { TokenService } from 'src/app/servicios/token.service';
 import { Alerta } from 'src/app/modelo/alerta';
 
 @Component({
-  selector: 'app-gestionar-citas',
-  templateUrl: './gestionar-citas.component.html',
-  styleUrls: ['./gestionar-citas.component.css']
+  selector: 'app-historial-citas',
+  templateUrl: './historial-citas.component.html',
+  styleUrls: ['./historial-citas.component.css']
 })
-export class GestionarCitasComponent {
+export class HistorialCitasComponent {
 
   cita: InfoCitaDTO[];
   infoCitaDTO: InfoCitaDTO;
   //agendarCita2DTO : InfoCitaDTO [];
   
-  citaAgendada: InfoCitaDTO [];
+  
 
   alerta!: Alerta;
 
 
   constructor(private citaService: CitaService, private pacienteService: PacienteService, private tokenService: TokenService) {
-    this.cita = [];
+    this.cita = citaService.listarCitasMedico();
     this.infoCitaDTO = new InfoCitaDTO();
-    this.citaAgendada = citaService.listar();
-    this.cargarCitasPaciente();
+    
+    
   
   }
 
   public cargarCitasPaciente() {
 
-    let codigo = this.tokenService.getCodigo();
-
-    this.pacienteService.listarCitas(codigo).subscribe({
-      
-      next: data => {
-        this.cita = data.respuesta;
-      },
-      error: error => {
-        this.alerta = { mensaje: error.error.mensaje, tipo: "danger" };
-      }
-    });
+   
   }
 
 
@@ -50,5 +40,4 @@ export class GestionarCitasComponent {
     this.infoCitaDTO.codigo = codigo;
   }
 
- 
 }

@@ -11,7 +11,7 @@
 
       </a>
       <app-menu-paciente class="nav col-8 mb-2 justify-content- mb-md-0" *ngIf="rol == 'paciente'"></app-menu-paciente>
-    
+      <app-menu-medico class="nav col-8 mb-2 justify-content- mb-md-0" *ngIf="rol == 'medico'"></app-menu-medico>
 
       <div class="col-0 text-end" *ngIf="!isLogged; then nologged else logged" ></div>
       <ng-template #nologged>

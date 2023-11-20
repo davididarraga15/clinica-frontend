@@ -20,6 +20,11 @@ import { AlertaComponent } from './pagina/alerta/alerta.component';
 import { UsuarioInterceptor } from './interceptor/usuario.interceptor';
 import { MenuPacienteComponent } from './pagina/paciente/menu-paciente/menu-paciente.component';
 import { InicioPacienteComponent } from './pagina/paciente/inicio-paciente/inicio-paciente.component';
+import { InicioMedicoComponent } from './pagina/medico/inicio-medico/inicio-medico.component';
+import { MenuMedicoComponent } from './pagina/medico/menu-medico/menu-medico.component';
+import { CitasMedicasComponent } from './pagina/medico/citas-medicas/citas-medicas.component';
+import { DisponibilidadComponent } from './pagina/medico/disponibilidad/disponibilidad.component';
+import { HistorialCitasComponent } from './pagina/medico/historial-citas/historial-citas.component';
 
 
 
@@ -39,6 +44,11 @@ import { InicioPacienteComponent } from './pagina/paciente/inicio-paciente/inici
     AlertaComponent,
     MenuPacienteComponent,
     InicioPacienteComponent,
+    InicioMedicoComponent,
+    MenuMedicoComponent,
+    CitasMedicasComponent,
+    DisponibilidadComponent,
+    HistorialCitasComponent,
     
   ],
   imports: [

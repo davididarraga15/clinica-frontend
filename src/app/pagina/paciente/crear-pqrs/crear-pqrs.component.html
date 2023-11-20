@@ -18,10 +18,7 @@
                     <select name="tipo" required class="form-select" [(ngModel)]="crearPqrsDTO.tipoSolicitud" >
     
                         <option value="" selected disabled>Seleccione un tipo</option>
-                        <option value="Petición" >Petición</option>
-                        <option value="Queja" >Queja</option>
-                        <option value="Reclamo" >Reclamo</option>
-                        <option value="Sugerencia" >Sugerencia</option>
+                        <option [value]="item" *ngFor="let item of tipoPqrs; index as i" >{{item}}</option>
                     </select>
                 </div>
             </div>
@@ -47,22 +44,16 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr>
-                                <td><input class="form-check-input" type="checkbox" (change)="seleccionar(1)" /></td>
-                                <td><p>1</p></td>
-                                <td><p>OFTALMOLOGÍA</p></td>
-                                <td><p>2023-10-20</p></td>
-                                <td><p>Pedrito</p></td>
-                            </tr>
+                            <tr *ngFor="let item of cita">
+                                <td><input class="form-check-input" type="checkbox" (change)="seleccionar(item.codigo)" /></td>
+                                <td><p>{{item.codigo}}</p></td>
+                                <td><p>{{item.especialidad}}</p></td>
+                                <td><p>{{item.fechaCita}}</p></td>
+                                <td><p>{{item.nombreMedico}}</p></td>
 
-                             <tr>
-                                <td><input class="form-check-input" type="checkbox"  (change)="seleccionar(2)" /></td>
-                                <td><p>2</p></td>
-                                <td><p>GENERAL</p></td>
-                                <td><p>2023-10-10</p></td>
-                                <td><p>Juanito</p></td>
                             </tr>
                         </tbody>
+                    
                     </table>
                 </div>
             </div>
@@ -73,6 +64,8 @@
                 <i class="fa-solid fa-folder-plus me-2" style="color: #ffffff;"></i>Crear PQRS
             </button>
         </form>
+
+        <app-alerta [alerta]="alerta"></app-alerta>
 
     </div>
 </div>
